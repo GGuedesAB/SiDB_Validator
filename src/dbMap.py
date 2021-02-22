@@ -43,18 +43,18 @@ class DBDot ():
                 log.error(f"Unknown key: {attr.tag}")
 
     def changeLayerId(self, newLayerId):
-        log.warning(f"Changing DB #{self.id} layer_id from {self.layer_id} to {newLayerId}")
+        log.debug(f"Changing DB #{self.id} layer_id from {self.layer_id} to {newLayerId}")
         self.layer_id = newLayerId
         for attr in self.dbAttribs:
             if attr.tag == "layer_id":
-                attr.set("layer_id", str(newLayerId))
+                attr.text = str(newLayerId)
 
     def changeLatcoord(self, newLatcoord, m=None, l=None):
         if m is not None and l is not None:
             latcoord = (newLatcoord, m, l)
         else:
             latcoord = newLatcoord
-        log.warning(f"Changing DB #{self.id} latcoord from {self.latcoord} to {latcoord}")
+        log.debug(f"Changing DB #{self.id} latcoord from {self.latcoord} to {latcoord}")
         self.latcoord = latcoord
         (n, m, l) = latcoord
         for attr in self.dbAttribs:
@@ -66,7 +66,7 @@ class DBDot ():
     def changePhysloc(self, newPhysloc, y=None):
         if y is not None:
             newPhysloc = (newPhysloc, y)
-        log.warning(f"Changing DB #{self.id} physloc from {self.physloc} to {newPhysloc}")
+        log.debug(f"Changing DB #{self.id} physloc from {self.physloc} to {newPhysloc}")
         self.physloc = newPhysloc
         (x,y) = newPhysloc
         for attr in self.dbAttribs:
@@ -75,11 +75,11 @@ class DBDot ():
                 attr.set("y", str(y))
 
     def changeColor(self, newColor):
-        log.warning(f"Changing DB #{self.id} color from {self.color} to {newColor}")
+        log.debug(f"Changing DB #{self.id} color from {self.color} to {newColor}")
         self.color = newColor
         for attr in self.dbAttribs:
             if attr.tag == "color":
-                attr.set("color", str(newColor))
+                attr.text = str(newColor)
 
     def getType(self):
         if self.color == "#ffff0000":
@@ -109,12 +109,19 @@ class Design ():
                     id += 1
         return self.dbDots
 
-    def addDBDot(self, DBDot):
+    def addDBDot(self, layer_id, latcoord, physloc, color):
+        newDBDot = self.dbDots[-1]
+        newDBDot.id = newDBDot.id + 1
+        newDBDot.changeLayerId(layer_id)
+        newDBDot.changeLatcoord(latcoord)
+        newDBDot.changePhysloc(physloc)
+        newDBDot.changeColor(color)
+        self.dbDots.append(newDBDot)
         sqdRoot = self.designParseTree.getroot()
         designTag = sqdRoot.find("design")
         for layer in designTag.findall("layer"):
             if layer.attrib["type"] == "DB":
-                layer.append(DBDot.dbAttribs)
+                layer.append(newDBDot.dbAttribs)
 
     def overwriteDBDots(self, DBDotList=None):
         if (DBDotList == None):
@@ -141,6 +148,7 @@ def test():
         dir.changePhysloc(1.03, 1.03)
         dir.changeColor("#ffffffff")
     design.overwriteDBDots()
+    design.addDBDot(10, (3, 3, 3), (2.22,3.33), "#00000000")
     design.save("test.xml")
 
 test()
