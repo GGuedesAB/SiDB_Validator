@@ -109,6 +109,13 @@ class Design ():
                     id += 1
         return self.dbDots
 
+    def addDBDot(self, DBDot):
+        sqdRoot = self.designParseTree.getroot()
+        designTag = sqdRoot.find("design")
+        for layer in designTag.findall("layer"):
+            if layer.attrib["type"] == "DB":
+                layer.append(DBDot.dbAttribs)
+
     def overwriteDBDots(self, DBDotList=None):
         if (DBDotList == None):
             DBDotList = self.dbDots
