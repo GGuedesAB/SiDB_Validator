@@ -11,9 +11,12 @@ class Logger ():
 
     def set_info(self):
         logging.basicConfig(level=logging.INFO, format=self.log_format, datefmt=self.date_format)
-	
+
     def set_warning(self):
         logging.basicConfig(level=logging.WARNING, format=self.log_format, datefmt=self.date_format)
+
+    def set_error(self):
+        logging.basicConfig(level=logging.ERROR, format=self.log_format, datefmt=self.date_format)
 
     def error(self, msg):
         logging.error(msg)
