@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sim_out>
+    <eng_info>
+        <engine>SimAnneal</engine>
+        <version>TBD</version>
+        <return_code>0</return_code>
+        <timestamp>Mon Feb 22 22:41:28 2021</timestamp>
+        <time_elapsed_s>0.079316</time_elapsed_s>
+    </eng_info>
+    <sim_params>
+        <T_e_inv_point>0.09995000064373016</T_e_inv_point>
+        <T_init>500</T_init>
+        <T_min>2</T_min>
+        <T_schedule>exponential</T_schedule>
+        <anneal_cycles>10000</anneal_cycles>
+        <debye_length>5</debye_length>
+        <eps_r>5.599999904632568</eps_r>
+        <hop_attempt_factor>5</hop_attempt_factor>
+        <muzm>-0.2800000011920929</muzm>
+        <num_instances>-1</num_instances>
+        <phys_validity_check_cycles>10</phys_validity_check_cycles>
+        <reset_T_during_v_freeze_reset>false</reset_T_during_v_freeze_reset>
+        <result_queue_size>0.10000000149011612</result_queue_size>
+        <strategic_v_freeze_reset>false</strategic_v_freeze_reset>
+        <v_freeze_end_point>0.4000000059604645</v_freeze_end_point>
+        <v_freeze_init>-1</v_freeze_init>
+        <v_freeze_reset>-1</v_freeze_reset>
+        <v_freeze_threshold>4</v_freeze_threshold>
+    </sim_params>
+    <physloc>
+        <dbdot x="-46.080000" y="0.000000"/>
+        <dbdot x="-38.400000" y="7.680000"/>
+        <dbdot x="-23.040000" y="7.680000"/>
+        <dbdot x="-30.720000" y="23.040000"/>
+        <dbdot x="-15.360000" y="0.000000"/>
+        <dbdot x="-30.720000" y="32.970000"/>
+        <dbdot x="-30.720000" y="48.330000"/>
+    </physloc>
+    <elec_dist>
+        <dist energy="0.082053" count="1000" physically_valid="0" state_count="3">-000-0-</dist>
+        <dist energy="0.250094" count="7000" physically_valid="1" state_count="3">-00--0-</dist>
+    </elec_dist>
+</sim_out>

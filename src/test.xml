@@ -1,0 +1,141 @@
+<siqad>
+    
+    <program>
+        <file_purpose>simulation</file_purpose>
+        <version>0.3.3</version>
+        <date>2021-02-22 22:41:27</date>
+    </program>
+    <sim_params>
+        <T_e_inv_point>0.09995000064373016</T_e_inv_point>
+        <T_init>500</T_init>
+        <T_min>2</T_min>
+        <T_schedule>exponential</T_schedule>
+        <anneal_cycles>10000</anneal_cycles>
+        <debye_length>5</debye_length>
+        <eps_r>5.599999904632568</eps_r>
+        <hop_attempt_factor>5</hop_attempt_factor>
+        <muzm>-0.2800000011920929</muzm>
+        <num_instances>-1</num_instances>
+        <phys_validity_check_cycles>10</phys_validity_check_cycles>
+        <reset_T_during_v_freeze_reset>false</reset_T_during_v_freeze_reset>
+        <result_queue_size>0.10000000149011612</result_queue_size>
+        <strategic_v_freeze_reset>false</strategic_v_freeze_reset>
+        <v_freeze_end_point>0.4000000059604645</v_freeze_end_point>
+        <v_freeze_init>-1</v_freeze_init>
+        <v_freeze_reset>-1</v_freeze_reset>
+        <v_freeze_threshold>4</v_freeze_threshold>
+    </sim_params>
+    
+    <gui>
+        <zoom>0.0798707</zoom>
+        <displayed_region x1="-84.2612" x2="73.619" y1="-20.1576" y2="62.6012" />
+        <scroll x="-152" y="-664" />
+    </gui>
+    
+    
+    <layers>
+        <layer_prop>
+            <name>Lattice</name>
+            <type>Lattice</type>
+            <role>Design</role>
+            <zoffset>0</zoffset>
+            <zheight>0</zheight>
+            <visible>1</visible>
+            <active>0</active>
+            <lat_vec>
+                <a1 x="3.84" y="0" />
+                <a2 x="0" y="7.68" />
+                <N>2</N>
+                <b1 x="0" y="0" />
+                <b2 x="0" y="2.25" />
+            </lat_vec>
+        </layer_prop>
+        <layer_prop>
+            <name>Screenshot Overlay</name>
+            <type>Misc</type>
+            <role>Overlay</role>
+            <zoffset>0</zoffset>
+            <zheight>0</zheight>
+            <visible>1</visible>
+            <active>0</active>
+        </layer_prop>
+        <layer_prop>
+            <name>Surface</name>
+            <type>DB</type>
+            <role>Design</role>
+            <zoffset>0</zoffset>
+            <zheight>0</zheight>
+            <visible>1</visible>
+            <active>0</active>
+        </layer_prop>
+        <layer_prop>
+            <name>Metal</name>
+            <type>Electrode</type>
+            <role>Design</role>
+            <zoffset>1000</zoffset>
+            <zheight>100</zheight>
+            <visible>1</visible>
+            <active>0</active>
+        </layer_prop>
+    </layers>
+    
+    <design>
+        
+        <layer type="Lattice" />
+        
+        <layer type="Misc" />
+        
+        <layer type="DB">
+            <dbdot>
+                <layer_id>5</layer_id>
+                <latcoord l="8" m="8" n="8" />
+                <physloc x="1.03" y="1.03" />
+                <color>#ffffffff</color>
+            </dbdot>
+            <dbdot>
+                <layer_id>5</layer_id>
+                <latcoord l="8" m="8" n="8" />
+                <physloc x="1.03" y="1.03" />
+                <color>#ffffffff</color>
+            </dbdot>
+            <dbdot>
+                <layer_id>5</layer_id>
+                <latcoord l="8" m="8" n="8" />
+                <physloc x="1.03" y="1.03" />
+                <color>#ffffffff</color>
+            </dbdot>
+            <dbdot>
+                <layer_id>5</layer_id>
+                <latcoord l="8" m="8" n="8" />
+                <physloc x="1.03" y="1.03" />
+                <color>#ffffffff</color>
+            </dbdot>
+            <dbdot>
+                <layer_id>5</layer_id>
+                <latcoord l="8" m="8" n="8" />
+                <physloc x="1.03" y="1.03" />
+                <color>#ffffffff</color>
+            </dbdot>
+            <dbdot>
+                <layer_id>5</layer_id>
+                <latcoord l="8" m="8" n="8" />
+                <physloc x="1.03" y="1.03" />
+                <color>#ffffffff</color>
+            </dbdot>
+            <dbdot>
+                <layer_id>10</layer_id>
+                <latcoord l="3" m="3" n="3" />
+                <physloc x="2.22" y="3.33" />
+                <color>#00000000</color>
+            </dbdot>
+        <dbdot>
+                <layer_id>10</layer_id>
+                <latcoord l="3" m="3" n="3" />
+                <physloc x="2.22" y="3.33" />
+                <color>#00000000</color>
+            </dbdot>
+        </layer>
+        
+        <layer type="Electrode" />
+    </design>
+</siqad>

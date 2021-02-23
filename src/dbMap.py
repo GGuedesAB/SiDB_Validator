@@ -138,17 +138,19 @@ class Design ():
     def save(self, fileName):
         self.designParseTree.write(fileName)
 
-def test():
-    design = Design(args.design)
-    designDbs = design.getDBDots()
-    for i, dir in enumerate(designDbs):
-        dir.changeLayerId(5)
-        tu = (8,8,8)
-        dir.changeLatcoord(tu)
-        dir.changePhysloc(1.03, 1.03)
-        dir.changeColor("#ffffffff")
-    design.overwriteDBDots()
-    design.addDBDot(10, (3, 3, 3), (2.22,3.33), "#00000000")
-    design.save("test.xml")
-
-test()
+# def test():
+#     design = Design(args.design)
+#     designDbs = design.getDBDots()
+#     for i, dir in enumerate(designDbs):
+#         print("DBDot Type is %s", dir.getType())
+#         dir.changeLayerId(5)
+#         tu = (8,8,8)
+#         dir.changeLatcoord(tu)
+#         dir.changePhysloc(1.03, 1.03)
+#         dir.changeColor("#ffffffff")
+#     design.overwriteDBDots()
+#     design.addDBDot(10, (3, 3, 3), (2.22,3.33), "#00000000")
+#     design.save("test.xml")
+#
+#
+# test()
