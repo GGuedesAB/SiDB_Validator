@@ -30,7 +30,7 @@ class DBDot ():
     def __init__(self, dbAttribs, id=0) -> None:
         self.dbAttribs = dbAttribs
         self.id = id
-        for attr in dbAttribs:
+        for attr in self.dbAttribs:
             if attr.tag == "layer_id":
                 self.layer_id = attr.text
             elif attr.tag == "latcoord":
@@ -110,7 +110,7 @@ class Design ():
         return self.dbDots
 
     def addDBDot(self, layer_id, latcoord, physloc, color):
-        newDBDot = self.dbDots[-1]
+        newDBDot = DBDot(self.dbDots[0].dbAttribs)
         newDBDot.id = newDBDot.id + 1
         newDBDot.changeLayerId(layer_id)
         newDBDot.changeLatcoord(latcoord)
@@ -135,6 +135,53 @@ class Design ():
                 for db in DBDotList:
                     layer.append(db.dbAttribs)
 
+    def areSameDb(self, db1_attr, db2):
+        if isinstance(db1_attr, DBDot):
+            db1 = db1_attr
+        else:
+            db1 = DBDot(db1_attr)
+
+        db1_coord1, db1_coord2, db1_coord3 = db1.latcoord
+        db1_physloc1, db1_physloc2 = db1.physloc
+        db1_int_latcoord = (int(db1_coord1), int(db1_coord2), int(db1_coord3))
+        db1_float_physloc = (float(db1_physloc1), float(db1_physloc2))
+        db2_layer_id, db2_latcoord, db2_physloc, db2_color = db2
+        equal_id = int(db1.layer_id) == db2_layer_id
+        equal_latcoord = db1_int_latcoord == db2_latcoord
+        equal_physloc = db1_float_physloc == db2_physloc
+        equal_color = db1.color == db2_color
+        if equal_id and equal_latcoord and equal_physloc and equal_color:
+            return True
+        else:
+            return False
+
+    def removeDBDot(self, dbattrs, latcoord=None, physloc=None, color=None):
+        try:
+            if latcoord == None:
+                targetDb = dbattrs
+            else:
+                targetDb = (dbattrs, latcoord, physloc, color)
+        except:
+            log.error("Please pass db dot information as a tuple (layer_id, latcoord, physloc, color)")
+        found = 0
+        sqdRoot = self.designParseTree.getroot()
+        designTag = sqdRoot.find("design")
+        for layer in designTag.findall("layer"):
+            if layer.attrib["type"] == "DB":
+                for db in layer.findall("dbdot"):
+                    if self.areSameDb(db, targetDb):
+                        for designDb in self.dbDots:
+                            if self.areSameDb(designDb, targetDb):
+                                self.dbDots.remove(designDb)
+                        layer.remove(db)
+                        found+=1
+        if (found == 0):
+            log.warning(f"Could not find the following db in the design:\n\t({targetDb})")
+        elif (found > 1):
+            log.error(f"More than one db matched db to be removed:\n\t({targetDb})")
+
+        self.overwriteDBDots()
+
     def save(self, fileName):
         self.designParseTree.write(fileName)
 
@@ -143,13 +190,14 @@ class Design ():
 #     designDbs = design.getDBDots()
 #     for i, dir in enumerate(designDbs):
 #         print("DBDot Type is %s", dir.getType())
-#         dir.changeLayerId(5)
+#         dir.changeLayerId(i)
 #         tu = (8,8,8)
 #         dir.changeLatcoord(tu)
 #         dir.changePhysloc(1.03, 1.03)
 #         dir.changeColor("#ffffffff")
 #     design.overwriteDBDots()
 #     design.addDBDot(10, (3, 3, 3), (2.22,3.33), "#00000000")
+#     design.removeDBDot(3, (3, 3, 3), (2.22,3.33), "#00000000")
 #     design.save("test.xml")
 #
 #
