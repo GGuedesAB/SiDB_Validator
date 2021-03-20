@@ -2,6 +2,7 @@ import argparse
 import os
 import xml.etree.ElementTree as ET
 import logger
+import copy
 from random import seed
 from random import randint
 
@@ -110,7 +111,7 @@ class Design ():
         return self.dbDots
 
     def addDBDot(self, layer_id, latcoord, physloc, color):
-        newDBDot = DBDot(self.dbDots[0].dbAttribs)
+        newDBDot = DBDot(copy.deepcopy(self.dbDots[-1].dbAttribs))
         newDBDot.id = newDBDot.id + 1
         newDBDot.changeLayerId(layer_id)
         newDBDot.changeLatcoord(latcoord)
@@ -173,8 +174,8 @@ class Design ():
                         for designDb in self.dbDots:
                             if self.areSameDb(designDb, targetDb):
                                 self.dbDots.remove(designDb)
+                                found+=1
                         layer.remove(db)
-                        found+=1
         if (found == 0):
             log.warning(f"Could not find the following db in the design:\n\t({targetDb})")
         elif (found > 1):
@@ -197,8 +198,8 @@ class Design ():
 #         dir.changeColor("#ffffffff")
 #     design.overwriteDBDots()
 #     design.addDBDot(10, (3, 3, 3), (2.22,3.33), "#00000000")
-#     design.removeDBDot(3, (3, 3, 3), (2.22,3.33), "#00000000")
+#     design.removeDBDot(3, (8, 8, 8), (1.03,1.03), "#ffffffff")
 #     design.save("test.xml")
-#
-#
+# 
+# 
 # test()
