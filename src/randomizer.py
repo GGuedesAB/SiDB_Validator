@@ -35,6 +35,7 @@ class Randomizer ():
         self.inputs = []
         self.outputs = []
         self.std = []
+        self.inPerturber = []
         self.outPerturber = []
         self.mapPorts()
 
@@ -50,6 +51,8 @@ class Randomizer ():
                 self.outputs.append(DBDot)
             elif (portType == "std"):
                 self.std.append(DBDot)
+            elif (portType == "inPerturber"):
+                self.inPerturber.append(DBDot)
             else:
             # elif (portType == "perturber"):
                 self.outPerturber.append(DBDot)
@@ -280,6 +283,13 @@ class Randomizer ():
     # else:
     #     log.error(f"modifyAngle: position of root db in pair inconsistent. l can only be 0 or 1\n")
 
+    def modifyInputAngle(self, DBRoot, DBin, DBper, angle):
+        inputPair1 = [DBRoot, DBin]
+        inputPair2 = [DBRoot, DBper]
+        self.modifyAngle(inputPair1, angle)
+        self.modifyAngle(inputPair2, angle)
+
+
 def test():
     design = Design(args.design)
     randomizer = Randomizer(design)
@@ -288,7 +298,9 @@ def test():
     print("Outputs: " + str(randomizer.outputs))
     print("Std: " + str(randomizer.std))
     print("Perturbers: " + str(randomizer.outPerturber))
+    print("inPertubers: " + str(randomizer.inPerturber))
     print("Perturbers: " + str(-1))
+    #design.removeDBDot(designDbs[0])
 
     # TESTS FOR MODIFYPOSITIONS METHOD
     #   OR:
@@ -305,8 +317,11 @@ def test():
     # randomizer.modifyAngle(inputPair1, 120)
     # randomizer.modifyAngle(inputPair2, 120)
     # 3-INPUT MAJ GATE:
-    inputPair1 = [randomizer.std[0], randomizer.inputs[0]]
-    randomizer.modifyAngle(inputPair1, 120)
+    #inputPair1 = [randomizer.std[0], randomizer.inputs[0]]
+    #inputPair2 = [randomizer.std[0], randomizer.inPerturber[0]]
+    #randomizer.modifyAngle(inputPair1, 60)
+    #randomizer.modifyAngle(inputPair2, 60)
+    randomizer.modifyInputAngle(randomizer.std[0], randomizer.inputs[0], randomizer.inPerturber[0], 180)
 
     #   GENERAL DBPAIRS:
     #   top of horizontal line

@@ -2,35 +2,15 @@
 <siqad>
     <!--Program Flags-->
     <program>
-        <file_purpose>simulation</file_purpose>
+        <file_purpose>save</file_purpose>
         <version>0.3.3</version>
-        <date>2021-02-22 22:41:27</date>
+        <date>2021-03-20 12:37:11</date>
     </program>
-    <sim_params>
-        <T_e_inv_point>0.09995000064373016</T_e_inv_point>
-        <T_init>500</T_init>
-        <T_min>2</T_min>
-        <T_schedule>exponential</T_schedule>
-        <anneal_cycles>10000</anneal_cycles>
-        <debye_length>5</debye_length>
-        <eps_r>5.599999904632568</eps_r>
-        <hop_attempt_factor>5</hop_attempt_factor>
-        <muzm>-0.2800000011920929</muzm>
-        <num_instances>-1</num_instances>
-        <phys_validity_check_cycles>10</phys_validity_check_cycles>
-        <reset_T_during_v_freeze_reset>false</reset_T_during_v_freeze_reset>
-        <result_queue_size>0.10000000149011612</result_queue_size>
-        <strategic_v_freeze_reset>false</strategic_v_freeze_reset>
-        <v_freeze_end_point>0.4000000059604645</v_freeze_end_point>
-        <v_freeze_init>-1</v_freeze_init>
-        <v_freeze_reset>-1</v_freeze_reset>
-        <v_freeze_threshold>4</v_freeze_threshold>
-    </sim_params>
     <!--GUI Flags-->
     <gui>
-        <zoom>0.0798707</zoom>
-        <displayed_region x1="-84.2612" y1="-20.1576" x2="73.619" y2="62.6012"/>
-        <scroll x="-152" y="-664"/>
+        <zoom>0.0503874</zoom>
+        <displayed_region x1="-103.994" y1="-22.2278" x2="103.002" y2="64.3018"/>
+        <scroll x="-103" y="-515"/>
     </gui>
     <!--Layer Properties-->
     <!--Layer ID is intrinsic to the layer order-->
@@ -128,6 +108,18 @@
                 <latcoord n="-8" m="6" l="1"/>
                 <physloc x="-30.72" y="48.33"/>
                 <color>#ff0000ff</color>
+            </dbdot>
+            <dbdot>
+                <layer_id>2</layer_id>
+                <latcoord n="-14" m="-1" l="0"/>
+                <physloc x="-53.76" y="-7.68"/>
+                <color>#ffffff00</color>
+            </dbdot>
+            <dbdot>
+                <layer_id>2</layer_id>
+                <latcoord n="-2" m="-1" l="0"/>
+                <physloc x="-7.68" y="-7.68"/>
+                <color>#ffffff00</color>
             </dbdot>
         </layer>
         <!--Metal-->

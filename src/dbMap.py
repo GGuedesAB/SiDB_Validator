@@ -89,6 +89,8 @@ class DBDot ():
             return "std"
         elif self.color == "#ff00ff00":
             return "in"
+        elif self.color == "#ffffff00":
+            return "inPerturber"
 
 class Design ():
     def __init__(self, designFile) -> None:
