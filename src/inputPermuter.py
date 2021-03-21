@@ -65,6 +65,18 @@ class Permuter ():
         counter = 0
         per_dir = ""
 
+        # 1st inputperturber data
+        input1_id = self.inPerturber[0].layer_id
+        input1_latcoord = self.inPerturber[0].latcoord
+        input1_physloc = self.inPerturber[0].physloc
+        input1_color = self.inPerturber[0].color
+
+        # 2nd inputperturber data
+        input2_id = self.inPerturber[1].layer_id
+        input2_latcoord = self.inPerturber[1].latcoord
+        input2_physloc = self.inPerturber[1].physloc
+        input2_color = self.inPerturber[1].color
+
         for i in range(3):
             if (counter == 0):
                 per_dir = designName + "_11"
@@ -80,17 +92,18 @@ class Permuter ():
             os.chdir(per_path)
 
             if (counter == 1):
-                self.design.removeDBDot()
-                self.design.removeDBDot()
+                self.design.removeDBDot(self.inPerturber[0].dbAttribs)
+                self.design.removeDBDot(self.inPerturber[1].dbAttribs)
             elif (counter == 2):
-                self.design.addDBDot()
+                self.design.addDBDot(input2_id, input2_latcoord, input2_physloc, input2_color)
             elif (counter == 3):
-                self.design.removeDBDot()
-                self.design.addDBDot()
+                self.design.removeDBDot(self.inPerturber[1].dbAttribs)
+                self.design.addDBDot(input1_id, input1_latcoord, input1_physloc, input1_color)
 
             self.design.overwriteDBDots()
             self.design.save(per_dir + ".sqd")
             self.design.save(per_dir + ".xml")
+            counter = counter + 1
 
     def permute3inputs(self, designName):
         directory = "sims"
@@ -100,6 +113,24 @@ class Permuter ():
         counter = 0
         per_dir = ""
 
+        # 1st inputperturber data
+        input1_id = self.inPerturber[0].layer_id
+        input1_latcoord = self.inPerturber[0].latcoord
+        input1_physloc = self.inPerturber[0].physloc
+        input1_color = self.inPerturber[0].color
+
+        # 2nd inputperturber data
+        input2_id = self.inPerturber[1].layer_id
+        input2_latcoord = self.inPerturber[1].latcoord
+        input2_physloc = self.inPerturber[1].physloc
+        input2_color = self.inPerturber[1].color
+
+        # 3rd inputperturber data
+        input3_id = self.inPerturber[2].layer_id
+        input3_latcoord = self.inPerturber[2].latcoord
+        input3_physloc = self.inPerturber[2].physloc
+        input3_color = self.inPerturber[2].color
+
         for i in range(7):
             if (counter == 0):
                 per_dir = designName + "_111"
@@ -108,44 +139,107 @@ class Permuter ():
             elif (counter == 2):
                 per_dir = designName + "_001"
             elif (counter == 3):
-                per_dir = designName + "_010"
-            elif (counter == 4):
                 per_dir = designName + "_011"
+            elif (counter == 4):
+                per_dir = designName + "_010"
             elif (counter == 5):
-                per_dir = designName + "_100"
-            elif (counter == 6):
-                per_dir = designName + "_101"
-            elif (counter == 7):
                 per_dir = designName + "_110"
+            elif (counter == 6):
+                per_dir = designName + "_100"
+            elif (counter == 7):
+                per_dir = designName + "_101"
 
             per_path = os.path.join(path, per_dir)
             os.mkdir(per_path)
             os.chdir(per_path)
 
             if (counter == 1):
-                self.design.removeDBDot()
-                self.design.removeDBDot()
-                self.design.removeDBDot()
+                self.design.removeDBDot(self.inPerturber[0].dbAttribs)
+                self.design.removeDBDot(self.inPerturber[1].dbAttribs)
+                self.design.removeDBDot(self.inPerturber[2].dbAttribs)
             elif (counter == 2):
-                design.addDBDot()
+                self.design.addDBDot(input3_id, input3_latcoord, input3_physloc, input3_color)
             elif (counter == 3):
-                design.removeDBDot()
-                design.addDBDot()
+                self.design.addDBDot(input2_id, input2_latcoord, input2_physloc, input2_color)
             elif (counter == 4):
-                design.removeDBDot()
-                design.addDBDot()
+                self.design.removeDBDot(self.inPerturber[2].dbAttribs)
             elif (counter == 5):
-                design.removeDBDot()
-                design.addDBDot()
+                self.design.addDBDot(input1_id, input1_latcoord, input1_physloc, input1_color)
             elif (counter == 6):
-                design.removeDBDot()
-                design.addDBDot()
+                self.design.removeDBDot(self.inPerturber[1].dbAttribs)
             elif (counter == 7):
-                design.removeDBDot()
-                design.addDBDot()
+                self.design.addDBDot(input3_id, input3_latcoord, input3_physloc, input3_color)
 
+            self.design.overwriteDBDots()
+            self.design.save(per_dir + ".sqd")
+            self.design.save(per_dir + ".xml")
+            counter = counter + 1
 
+def test():
+    design = Design(args.design)
+    randomizer = Randomizer(design)
+    inputpermuter = Permuter(design)
+    designDbs = randomizer.design.getDBDots()
+    print("Inputs: " + str(randomizer.inputs))
+    print("Outputs: " + str(randomizer.outputs))
+    print("Std: " + str(randomizer.std))
+    print("Perturbers: " + str(randomizer.outPerturber))
+    print("inPertubers: " + str(randomizer.inPerturber))
+    print("Perturbers: " + str(-1))
+    #design.removeDBDot(designDbs[0])
 
-            design.overwriteDBDots()
-            design.save(per_dir + ".sqd")
-            design.save(per_dir + ".xml")
+    # TESTS FOR MODIFYPOSITIONS METHOD
+    #   OR:
+    # randomizer.modifyPositions("vertical", 2, "outputPos")
+    # randomizer.modifyPositions("vertical", 2, "inputPos")
+    # randomizer.modifyPositions("horizontal", -2, "inputPos")
+    # randomizer.modifyPositions("horizontal", 2, "outputPos")
+    #   3-INPUT MAJ GATE:
+
+    # TESTS FOR MODIFYANGLE METHOD
+    #   OR:
+    # inputPair1 = [randomizer.std[0], randomizer.inputs[0]]
+    # inputPair2 = [randomizer.std[1], randomizer.inputs[1]]
+    # randomizer.modifyAngle(inputPair1, 120)
+    # randomizer.modifyAngle(inputPair2, 120)
+    # 3-INPUT MAJ GATE:
+    #inputPair1 = [randomizer.std[0], randomizer.inputs[0]]
+    #inputPair2 = [randomizer.std[0], randomizer.inPerturber[0]]
+    #randomizer.modifyAngle(inputPair1, 60)
+    #randomizer.modifyAngle(inputPair2, 60)
+    randomizer.modifyInputAngle(randomizer.std[0], randomizer.inputs[0], randomizer.inPerturber[0], 180)
+
+    #   GENERAL DBPAIRS:
+    #   top of horizontal line
+    # inputpair1 = [randomizer.std[0], randomizer.inputs[0]]
+    # inputpair2 = [randomizer.std[1], randomizer.inputs[1]]
+    # inputpair3 = [randomizer.std[2], randomizer.inputs[2]]
+    # inputpair4 = [randomizer.std[3], randomizer.inputs[3]]
+    # inputpair5 = [randomizer.std[4], randomizer.inputs[4]]
+    # randomizer.modifyAngle(inputpair1, 120)
+    # randomizer.modifyAngle(inputpair2, 120)
+    # randomizer.modifyAngle(inputpair3, 120)
+    # randomizer.modifyAngle(inputpair4, 120)
+    # randomizer.modifyAngle(inputpair5, 120)
+
+    #   bottom of horizontal line
+    # inputpair6 = [randomizer.std[5], randomizer.inputs[5]]
+    # inputpair7 = [randomizer.std[6], randomizer.inputs[6]]
+    # inputpair8 = [randomizer.std[7], randomizer.inputs[7]]
+    # inputpair9 = [randomizer.std[8], randomizer.inputs[8]]
+    # inputpair10 = [randomizer.std[9], randomizer.inputs[9]]
+    # randomizer.modifyAngle(inputpair6, -120)
+    # randomizer.modifyAngle(inputpair7, -120)
+    # randomizer.modifyAngle(inputpair8, -120)
+    # randomizer.modifyAngle(inputpair9, -120)
+    # randomizer.modifyAngle(inputpair10, -120)
+
+    # TESTS FOR MODIFYSPECIFIC DB METHOD
+
+    design.overwriteDBDots()
+    design.save("test.sqd")
+    design.save("test.xml")
+
+    inputpermuter.permute2inputs("TEST_OR_GATE")
+
+test()
