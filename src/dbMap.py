@@ -142,13 +142,18 @@ class Design ():
         if isinstance(db1_attr, DBDot):
             db1 = db1_attr
         else:
-            db1 = DBDot(db1_attr)
+            db1 = DBDot(copy.deepcopy(db1_attr))
 
         db1_coord1, db1_coord2, db1_coord3 = db1.latcoord
         db1_physloc1, db1_physloc2 = db1.physloc
         db1_int_latcoord = (int(db1_coord1), int(db1_coord2), int(db1_coord3))
         db1_float_physloc = (float(db1_physloc1), float(db1_physloc2))
         db2_layer_id, db2_latcoord, db2_physloc, db2_color = db2
+        if isinstance(db2, ET.Element):
+            db2_layer_id = int(db2_layer_id.text)
+            db2_latcoord = (int(db2_latcoord.attrib['l']), int(db2_latcoord.attrib['m']), int(db2_latcoord.attrib['n']))
+            db2_physloc = (float(db2_physloc.attrib['x']), float(db2_physloc.attrib['y']))
+            db2_color = db2_color.text
         equal_id = int(db1.layer_id) == db2_layer_id
         equal_latcoord = db1_int_latcoord == db2_latcoord
         equal_physloc = db1_float_physloc == db2_physloc
