@@ -77,7 +77,7 @@ class Permuter ():
         input2_physloc = self.inPerturber[1].physloc
         input2_color = self.inPerturber[1].color
 
-        for i in range(3):
+        for i in range(4):
             if (counter == 0):
                 per_dir = designName + "_11"
             elif (counter == 1):
@@ -131,7 +131,7 @@ class Permuter ():
         input3_physloc = self.inPerturber[2].physloc
         input3_color = self.inPerturber[2].color
 
-        for i in range(7):
+        for i in range(8):
             if (counter == 0):
                 per_dir = designName + "_111"
             elif (counter == 1):

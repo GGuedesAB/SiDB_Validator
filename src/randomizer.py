@@ -290,16 +290,16 @@ class Randomizer ():
         self.modifyAngle(inputPair2, angle)
 
 
-def test():
-    design = Design(args.design)
-    randomizer = Randomizer(design)
-    designDbs = randomizer.design.getDBDots()
-    print("Inputs: " + str(randomizer.inputs))
-    print("Outputs: " + str(randomizer.outputs))
-    print("Std: " + str(randomizer.std))
-    print("Perturbers: " + str(randomizer.outPerturber))
-    print("inPertubers: " + str(randomizer.inPerturber))
-    print("Perturbers: " + str(-1))
+# def test():
+#     design = Design(args.design)
+#     randomizer = Randomizer(design)
+#     designDbs = randomizer.design.getDBDots()
+#     print("Inputs: " + str(randomizer.inputs))
+#     print("Outputs: " + str(randomizer.outputs))
+#     print("Std: " + str(randomizer.std))
+#     print("Perturbers: " + str(randomizer.outPerturber))
+#     print("inPertubers: " + str(randomizer.inPerturber))
+#     print("Perturbers: " + str(-1))
     #design.removeDBDot(designDbs[0])
 
     # TESTS FOR MODIFYPOSITIONS METHOD
@@ -317,11 +317,11 @@ def test():
     # randomizer.modifyAngle(inputPair1, 120)
     # randomizer.modifyAngle(inputPair2, 120)
     # 3-INPUT MAJ GATE:
-    #inputPair1 = [randomizer.std[0], randomizer.inputs[0]]
-    #inputPair2 = [randomizer.std[0], randomizer.inPerturber[0]]
-    #randomizer.modifyAngle(inputPair1, 60)
-    #randomizer.modifyAngle(inputPair2, 60)
-    randomizer.modifyInputAngle(randomizer.std[0], randomizer.inputs[0], randomizer.inPerturber[0], 180)
+    # inputPair1 = [randomizer.std[0], randomizer.inputs[0]]
+    # inputPair2 = [randomizer.std[0], randomizer.inPerturber[0]]
+    # randomizer.modifyAngle(inputPair1, 60)
+    # randomizer.modifyAngle(inputPair2, 60)
+    # randomizer.modifyInputAngle(randomizer.std[0], randomizer.inputs[0], randomizer.inPerturber[0], 180)
 
     #   GENERAL DBPAIRS:
     #   top of horizontal line
@@ -350,9 +350,9 @@ def test():
 
     # TESTS FOR MODIFYSPECIFIC DB METHOD
 
-    design.overwriteDBDots()
-    design.save("test.sqd")
-    design.save("test.xml")
+    # design.overwriteDBDots()
+    # design.save("test.sqd")
+    # design.save("test.xml")
 
 
 
@@ -365,5 +365,5 @@ def test():
     #     dir.changeColor("#ffffffff")
     # design.overwriteDBDots()
     # design.addDBDot(10, (3, 3, 3), (2.22, 3.33), "#00000000")
-    # design.save("test.xml")
-test()
+    #design.save("test.xml")
+# test()
