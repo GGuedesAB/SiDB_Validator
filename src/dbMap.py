@@ -3,6 +3,7 @@ import os
 import xml.etree.ElementTree as ET
 import logger
 import copy
+import math
 from random import seed
 from random import randint
 
@@ -151,12 +152,13 @@ class Design ():
         db2_layer_id, db2_latcoord, db2_physloc, db2_color = db2
         if isinstance(db2, ET.Element):
             db2_layer_id = int(db2_layer_id.text)
-            db2_latcoord = (int(db2_latcoord.attrib['l']), int(db2_latcoord.attrib['m']), int(db2_latcoord.attrib['n']))
+            db2_latcoord = (int(db2_latcoord.attrib['n']), int(db2_latcoord.attrib['m']), int(db2_latcoord.attrib['l']))
             db2_physloc = (float(db2_physloc.attrib['x']), float(db2_physloc.attrib['y']))
             db2_color = db2_color.text
         equal_id = int(db1.layer_id) == db2_layer_id
         equal_latcoord = db1_int_latcoord == db2_latcoord
-        equal_physloc = db1_float_physloc == db2_physloc
+        equal_physloc = math.isclose(db1_float_physloc[0],  db2_physloc[0], abs_tol=1e-2)
+        equal_physloc = equal_physloc and (math.isclose(db1_float_physloc[1],  db2_physloc[1], abs_tol=1e-2))
         equal_color = db1.color == db2_color
         if equal_id and equal_latcoord and equal_physloc and equal_color:
             return True
