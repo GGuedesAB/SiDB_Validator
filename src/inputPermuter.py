@@ -186,7 +186,7 @@ def test():
     print("Perturbers: " + str(randomizer.outPerturber))
     print("inPertubers: " + str(randomizer.inPerturber))
     print("Perturbers: " + str(-1))
-    #design.removeDBDot(designDbs[0])
+    # design.removeDBDot(designDbs[0])
 
     # TESTS FOR MODIFYPOSITIONS METHOD
     #   OR:
@@ -203,11 +203,13 @@ def test():
     # randomizer.modifyAngle(inputPair1, 120)
     # randomizer.modifyAngle(inputPair2, 120)
     # 3-INPUT MAJ GATE:
-    #inputPair1 = [randomizer.std[0], randomizer.inputs[0]]
-    #inputPair2 = [randomizer.std[0], randomizer.inPerturber[0]]
-    #randomizer.modifyAngle(inputPair1, 60)
-    #randomizer.modifyAngle(inputPair2, 60)
-    randomizer.modifyInputAngle(randomizer.std[0], randomizer.inputs[0], randomizer.inPerturber[0], 180)
+    # inputPair1 = [randomizer.std[0], randomizer.inputs[0]]
+    # inputPair2 = [randomizer.std[0], randomizer.inPerturber[0]]
+    # randomizer.modifyAngle(inputPair1, 60)
+    # randomizer.modifyAngle(inputPair2, 60)
+    randomizer.modifyInputAngle(randomizer.std[0], randomizer.inputs[0], randomizer.inPerturber[0], 120)
+    randomizer.modifyInputAngle(randomizer.std[3], randomizer.inputs[2], randomizer.inPerturber[2], -60)
+    # randomizer.modifyInputAngle(randomizer.std[0], randomizer.inputs[0], randomizer.inPerturber[0], 60)
 
     #   GENERAL DBPAIRS:
     #   top of horizontal line
@@ -240,6 +242,6 @@ def test():
     design.save("test.sqd")
     design.save("test.xml")
 
-    inputpermuter.permute2inputs("TEST_OR_GATE")
+    inputpermuter.permute3inputs("TEST_3IN_MAJ_GATE")
 
 test()

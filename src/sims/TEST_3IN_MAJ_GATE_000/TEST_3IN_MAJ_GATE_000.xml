@@ -140,25 +140,7 @@
                 <physloc x="-3.84" y="32.97" />
                 <color>#ff00ff00</color>
             </dbdot>
-            <dbdot>
-                <layer_id>2</layer_id>
-                <latcoord l="1" m="-6" n="-14" />
-                <physloc x="-53.76" y="-43.83" />
-                <color>#ffffff00</color>
-            </dbdot>
-            <dbdot>
-                <layer_id>2</layer_id>
-                <latcoord l="0" m="-6" n="-2" />
-                <physloc x="-7.68" y="-46.08" />
-                <color>#ffffff00</color>
-            </dbdot>
-            <dbdot>
-                <layer_id>2</layer_id>
-                <latcoord l="1" m="6" n="1" />
-                <physloc x="3.84" y="48.33" />
-                <color>#ffffff00</color>
-            </dbdot>
-        </layer>
+            </layer>
         
         <layer type="Electrode" />
     </design>
