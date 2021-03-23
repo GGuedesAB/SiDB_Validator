@@ -207,7 +207,7 @@ def test():
     # inputPair2 = [randomizer.std[0], randomizer.inPerturber[0]]
     # randomizer.modifyAngle(inputPair1, 60)
     # randomizer.modifyAngle(inputPair2, 60)
-    randomizer.modifyInputAngle(randomizer.std[0], randomizer.inputs[0], randomizer.inPerturber[0], 120)
+    # randomizer.modifyInputAngle(randomizer.std[0], randomizer.inputs[0], randomizer.inPerturber[0], 120)
     randomizer.modifyInputAngle(randomizer.std[3], randomizer.inputs[2], randomizer.inPerturber[2], -60)
     # randomizer.modifyInputAngle(randomizer.std[0], randomizer.inputs[0], randomizer.inPerturber[0], 60)
 

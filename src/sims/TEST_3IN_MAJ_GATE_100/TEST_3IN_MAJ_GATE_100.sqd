@@ -88,8 +88,8 @@
         <layer type="DB">
             <dbdot>
                 <layer_id>2</layer_id>
-                <latcoord l="1" m="-1" n="-9" />
-                <physloc x="-34.56" y="-5.43" />
+                <latcoord l="1" m="0" n="-9" />
+                <physloc x="-34.56" y="2.25" />
                 <color>#ff00ff00</color>
             </dbdot>
             <dbdot>
@@ -142,8 +142,8 @@
             </dbdot>
             <dbdot>
                 <layer_id>2</layer_id>
-                <latcoord l="1" m="-6" n="-14" />
-                <physloc x="-53.76" y="-43.83" />
+                <latcoord l="1" m="0" n="-14" />
+                <physloc x="-53.76" y="2.25" />
                 <color>#ffffff00</color>
             </dbdot>
             </layer>
