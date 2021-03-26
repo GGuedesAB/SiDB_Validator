@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 import logger
 from random import seed
 from random import randint
+import shutil
 
 seed(1)
 
@@ -111,7 +112,18 @@ class Permuter ():
         directory = "sims"
         parent_dir = os.getcwd()
         path = os.path.join(parent_dir, directory)
-        os.mkdir(path)
+
+        if(os.path.isdir(path)):
+            path_bak = path + "_bak"
+            if(os.path.isdir(path_bak)):
+                shutil.rmtree(path_bak)
+                os.rename(path, path_bak)
+            else:
+                os.rename(path, path_bak)
+            os.mkdir(path)
+        else:
+            os.mkdir(path)
+
         counter = 0
         per_dir = ""
 
