@@ -92,6 +92,7 @@ class DBDot ():
             return "in"
         elif self.color == "#ffffff00":
             return "inPerturber"
+        # #ff0000ff is outPerturber color
 
 class Design ():
     def __init__(self, designFile) -> None:

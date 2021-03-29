@@ -1,18 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <siqad>
-    
+    <!--Program Flags-->
     <program>
         <file_purpose>save</file_purpose>
         <version>0.3.3</version>
         <date>2021-03-29 11:53:04</date>
     </program>
-    
+    <!--GUI Flags-->
     <gui>
         <zoom>0.1</zoom>
-        <displayed_region x1="-28.7" x2="28.3" y1="-33.3" y2="32.8" />
-        <scroll x="-324" y="-278" />
+        <displayed_region x1="-28.7" y1="-33.3" x2="28.3" y2="32.8"/>
+        <scroll x="-324" y="-278"/>
     </gui>
-    
-    
+    <!--Layer Properties-->
+    <!--Layer ID is intrinsic to the layer order-->
     <layers>
         <layer_prop>
             <name>Lattice</name>
@@ -23,11 +24,11 @@
             <visible>1</visible>
             <active>0</active>
             <lat_vec>
-                <a1 x="3.84" y="0" />
-                <a2 x="0" y="7.68" />
+                <a1 x="3.84" y="0"/>
+                <a2 x="0" y="7.68"/>
                 <N>2</N>
-                <b1 x="0" y="0" />
-                <b2 x="0" y="2.25" />
+                <b1 x="0" y="0"/>
+                <b2 x="0" y="2.25"/>
             </lat_vec>
         </layer_prop>
         <layer_prop>
@@ -58,22 +59,22 @@
             <active>0</active>
         </layer_prop>
     </layers>
-    
+    <!--Item Hierarchy-->
     <design>
-        
-        <layer type="Lattice" />
-        
-        <layer type="Misc" />
-        
+        <!--Lattice-->
+        <layer type="Lattice"/>
+        <!--Screenshot Overlay-->
+        <layer type="Misc"/>
+        <!--Surface-->
         <layer type="DB">
             <dbdot>
                 <layer_id>2</layer_id>
-                <latcoord l="0" m="-9" n="-6" />
-                <physloc x="-23.04" y="-34.56" />
+                <latcoord n="-1" m="-3" l="0"/>
+                <physloc x="-3.84" y="-23.04"/>
                 <color>#ffffff00</color>
             </dbdot>
         </layer>
-        
-        <layer type="Electrode" />
+        <!--Metal-->
+        <layer type="Electrode"/>
     </design>
 </siqad>

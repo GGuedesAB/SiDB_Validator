@@ -89,7 +89,7 @@ class Randomizer ():
         dbDot.changeLatcoord(n, m, l)
         dbDot.changePhysloc(newX, newY)
 
-    def modifySpecificDB(self, dbId, distance, axis):
+    def modifySpecificDBbyID(self, dbId, distance, axis):
         DBDotList = self.design.getDBDots()
         for i, DBDot in enumerate(DBDotList):
             if DBDot.id == dbId:
@@ -101,6 +101,14 @@ class Randomizer ():
                     self.changeYcoord(DBDot, distance, int(n), int(m), int(l))
             else:
                 log.error(f" modifySpecificDB: id of DB not found\n")
+
+    def modifySpecificDB(self, DBDot, distance, axis):
+        if axis == "x":
+            (n, m, l) = DBDot.latcoord
+            self.changeXcoord(DBDot, distance, int(n), int(m), int(l))
+        if axis == "y":
+            (n, m, l) = DBDot.latcoord
+            self.changeYcoord(DBDot, distance, int(n), int(m), int(l))
 
     # Below method only works for 2 input gates. Work on solution for 3 input gates.
     def modifyPositions(self, axis, distance, type=None):
@@ -288,3 +296,21 @@ class Randomizer ():
         inputPair2 = [DBRoot, DBper]
         self.modifyAngle(inputPair1, angle)
         self.modifyAngle(inputPair2, angle)
+
+# def test():
+#     design = Design(args.design)
+#     randomizer = Randomizer(design)
+#
+#     #randomizer.modifySpecificDBbyID(0, 2, "x")
+#     randomizer.modifySpecificDB(randomizer.inPerturber[0], -5, "x")
+#     randomizer.modifySpecificDB(randomizer.inPerturber[0], -6, "y")
+#
+#
+#
+#     design.overwriteDBDots()
+#     design.save("test.sqd")
+#     design.save("test.xml")
+#
+#
+#
+# test()

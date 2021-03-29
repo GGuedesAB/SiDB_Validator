@@ -68,9 +68,57 @@
         <layer type="DB">
             <dbdot>
                 <layer_id>2</layer_id>
-                <latcoord l="0" m="-9" n="-6" />
-                <physloc x="-23.04" y="-34.56" />
-                <color>#ffffff00</color>
+                <latcoord l="1" m="-3" n="-4" />
+                <physloc x="-15.36" y="-9.27" />
+                <color>#ff00ff00</color>
+            </dbdot>
+        <dbdot>
+                <layer_id>2</layer_id>
+                <latcoord l="1" m="2" n="-4" />
+                <physloc x="-15.36" y="9.93" />
+                <color>#ff00ff00</color>
+            </dbdot>
+        <dbdot>
+                <layer_id>2</layer_id>
+                <latcoord l="1" m="-2" n="-4" />
+                <physloc x="-15.36" y="-5.43" />
+                <color>#ffc8c8c8</color>
+            </dbdot>
+        <dbdot>
+                <layer_id>2</layer_id>
+                <latcoord l="1" m="1" n="-4" />
+                <physloc x="-15.36" y="6.09" />
+                <color>#ffc8c8c8</color>
+            </dbdot>
+        <dbdot>
+                <layer_id>2</layer_id>
+                <latcoord l="0" m="0" n="4" />
+                <physloc x="15.36" y="0.0" />
+                <color>#ffc8c8c8</color>
+            </dbdot>
+        <dbdot>
+                <layer_id>2</layer_id>
+                <latcoord l="0" m="0" n="6" />
+                <physloc x="23.04" y="0.0" />
+                <color>#ffc8c8c8</color>
+            </dbdot>
+        <dbdot>
+                <layer_id>2</layer_id>
+                <latcoord l="0" m="0" n="11" />
+                <physloc x="42.239999999999995" y="0.0" />
+                <color>#ffc8c8c8</color>
+            </dbdot>
+        <dbdot>
+                <layer_id>2</layer_id>
+                <latcoord l="0" m="0" n="13" />
+                <physloc x="49.92" y="0.0" />
+                <color>#ffff0000</color>
+            </dbdot>
+        <dbdot>
+                <layer_id>2</layer_id>
+                <latcoord l="0" m="0" n="18" />
+                <physloc x="69.12" y="0.0" />
+                <color>#ff0000ff</color>
             </dbdot>
         </layer>
         
