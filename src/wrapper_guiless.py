@@ -12,27 +12,29 @@
 #                                                                           #
 #############################################################################
 
-# this imports assumes that a pysimanneal directory containing __init__.py,
-# simanneal.py, and the compiled simanneal library (_simanneal.so for Linux or
-# _simanneal.pyd for Windows) are present.
-# also a src directory containing dbMap.py, inputPermuter.py e randomizer.Py
-# should be present.
-
-from pysimanneal import simanneal
-from dbMap import Design, DBDot
-from randomizer import Randomizer
-from inputPermuter import Permuter
-
 import argparse
 import os
 import xml.etree.ElementTree as ET
-import logger
 import copy
 import math
 from random import seed
 from random import randint
 import re
 from datetime import datetime
+import sys
+
+# this imports assumes that a pysimanneal directory containing __init__.py,
+# simanneal.py, and the compiled simanneal library (_simanneal.so for Linux or
+# _simanneal.pyd for Windows) are present.
+# also a src directory containing dbMap.py, inputPermuter.py e randomizer.Py
+# should be present.
+
+sys.path.append("../../src/")    #include source code directory
+import logger
+from pysimanneal import simanneal
+from dbMap import Design, DBDot
+from randomizer import Randomizer
+from inputPermuter import Permuter
 
 
 seed(1)
@@ -60,28 +62,34 @@ arg_check()
 ##      User Parameters  - those should be always provided      ##
 
 design_name = "DESIGN_NAME"
-sim_mu = -0.28
-number_of_inputs = 3              # currently gateFinder only support 2 and 3 input gates
+sim_mu = -0.25
+number_of_inputs = 2              # currently gateFinder only support 2 and 3 input gates
 ext_potential_vector = None
 
-#   Creation of design, randomizer and inputPermuter is necessary for design edition and sim automation
+#   Creation of design
 design = Design(args.design)
+designDBs = design.getDBDots()
+
+##      Design Definitions        ##
+
+    # Please insert your DBs definitions here. Example of usage of Design class methods are provided
+    # in examples/AND2/wrapper.py
+
+
+
+
+
+##      DO NOT EDIT BELOW THIS LINE     ##
+
+design.overwriteDBDots()
+designDBs = design.getDBDots()
+design.removeDBDot(designDBs[0].dbAttribs)   #removing stub DB
+design.overwriteDBDots()
+
+# In this flow, we need to create randomizer and inputPermuter after definition of design DBs
+
 randomizer = Randomizer(design)
 inputpermuter = Permuter(design)
-
-##      Design Modifications        ##
-
-# This Part is reserved for user's modifications definitions. Please use classes methods to
-# modify DBs here.
-
-
-
-
-
-
-
-
-
 
 ##      PLEASE DO NOT EDIT BELOW THIS LINE. THIS PIECE OF CODE IS DESTINED TO AUTOMATICALLY     ##
 ##      HANDLE THE MODIFIED VERSION OF DESIGN AND GENERATE THE CORRECT SIMS AND OUTPUTS         ##
